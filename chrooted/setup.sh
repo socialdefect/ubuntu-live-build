@@ -17,8 +17,10 @@ deb-src http://nl.archive.ubuntu.com/ubuntu/ focal-security main restricted univ
 deb http://nl.archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse
 deb-src http://nl.archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse
 EOF
-sudo rm $HOME/live-build/chroot/ect/apt/sources.list
-sudo cp sources.list $HOME/live-build/chroot/ect/apt/
+
+sudo cp sources.list $HOME/live-build/chroot/root/
+
+inchroot mv /root/sources.list /etc/apt/
 
 inchroot apt-get update
 
@@ -26,7 +28,8 @@ inchroot apt dist-upgrade -y
 
 inchroot apt-get install -y libterm-readline-gnu-perl systemd-sysv
 
-inchroot dbus-uuidgen > /etc/machine-id
+inchroot dbus-uuidgen > /root/machine-id
+inchroot mv /root/machine-id /etc/
 
 inchroot ln -fs /etc/machine-id /var/lib/dbus/machine-id
 

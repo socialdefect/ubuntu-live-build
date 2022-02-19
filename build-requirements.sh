@@ -12,7 +12,7 @@ sudo apt-get install \
 
 mkdir $HOME/live-build
 
-if [ -f /usr/share/debootstrap/scripts/focals ]; then
+if [ -f /usr/share/debootstrap/scripts/focal ]; then
 	echo 'Found debootstrap config for Ubuntu Focal' && sleep 3
 else
 	clear

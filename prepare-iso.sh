@@ -4,9 +4,13 @@ cd $HOME/live-build/
 
 mkdir -p image/{casper,isolinux,install}
 
-sudo cp chroot/boot/vmlinuz-**-**-generic image/casper/vmlinuz
+VMLINUZ=`file chroot/boot/vmlinuz | awk '{print $NF}'`
 
-sudo cp chroot/boot/initrd.img-**-**-generic image/casper/initrd
+sudo cp  chroot/boot/"$VMLINUZ" image/casper/vmlinuz
+
+INITRD=`file chroot/boot/initrd.img | awk '{print $NF}'`
+
+sudo cp chroot/boot/"$INITRD" image/casper/initrd
 
 sudo cp chroot/boot/memtest86+.bin image/install/memtest86+
 

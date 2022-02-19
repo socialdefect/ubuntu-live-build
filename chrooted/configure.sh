@@ -11,7 +11,7 @@ inchroot dpkg-reconfigure locales
 
 inchroot dpkg-reconfigure resolvconf
 
-sudo cat <<EOF > chroot/etc/NetworkManager/NetworkManager.conf
+sudo cat <<EOF > $HOME/live-build/chroot/root/NetworkManager.conf
 [main]
 rc-manager=resolvconf
 plugins=ifupdown,keyfile
@@ -19,6 +19,8 @@ dns=dnsmasq
 [ifupdown]
 managed=false
 EOF
+
+inchroot cp /root/NetworkManager.conf $HOME/live-build/chroot/etc/NetworkManager/NetworkManager.conf
 
 inchroot dpkg-reconfigure network-manager
 
@@ -38,7 +40,6 @@ inchroot umount /sys
 
 inchroot umount /dev/pts
 
-inchroot export HISTSIZE=0
 
 exit $?
 
