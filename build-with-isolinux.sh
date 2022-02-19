@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd $HOME/live/build/image/
+cd $HOME/live-build/image/
 
 cat <<EOF> isolinux/isolinux.cfg
 UI vesamenu.c32MENU TITLE Boot Menu
