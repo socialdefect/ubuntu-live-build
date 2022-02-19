@@ -16,11 +16,6 @@ inchroot apt install -y p7zip-full snapd  bash-completion ark vim nano less mloc
 ## install gtk apps
 inchroot apt install -y --no-install-recommends gparted libreoffice-writer
 
-## Install snaps
-inchroot snap install core
-inchroot snap install brave
-inchroot snap install spotify-client
-
 
 exit $?
 
