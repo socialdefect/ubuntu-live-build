@@ -128,5 +128,7 @@ grub-mkstandalone \
 cat /usr/lib/grub/i386-pc/cdboot.img isolinux/core.img > isolinux/bios.img
 
 sudo /bin/bash -c "(find . -type f -print0 | xargs -0 md5sum | grep -v "\./md5sum.txt" > md5sum.txt)"
+sed -i 's+isolinux/efiboot.img+EFI/efiboot.img+g' md5sum.txt
+sed -i 's+isolinux/bios.img+boot/grub/bios.img+g' md5sum.txt
 
 exit $?
